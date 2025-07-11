@@ -1,4 +1,12 @@
-{
+{ "name": "fitflow-backend",
+  "version": "1.0.0",
+  "description": "Backend for FitFlow app",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
