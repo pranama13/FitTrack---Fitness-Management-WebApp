@@ -7,22 +7,21 @@ const WorkoutItem = ({ workout, onRefresh }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
 
-    // FIX: This effect checks if all sub-exercises are completed and updates the main status.
     useEffect(() => {
         if (!workout.exercises || workout.exercises.length === 0) return;
         
         const allExercisesDone = workout.exercises.every(ex => ex.completed);
         if (allExercisesDone && workout.status !== 'completed') {
-            handleToggleStatus(true); // Automatically mark the main task as complete
+            handleToggleStatus(true); 
         } else if (!allExercisesDone && workout.status === 'completed') {
-            handleToggleStatus(true, 'pending'); // Automatically mark as pending if an exercise is un-ticked
+            handleToggleStatus(true, 'pending'); 
         }
     }, [workout.exercises, workout.status]);
 
     const handleToggleStatus = async (isAuto = false, forceStatus = null) => {
         const newStatus = forceStatus || (workout.status === 'completed' ? 'pending' : 'completed');
         
-        // When a user manually clicks the main tick, all sub-tasks should match the new state.
+       
         const updatedExercises = isAuto ? workout.exercises : workout.exercises.map(ex => ({ ...ex, completed: newStatus === 'completed' }));
         
         try {
@@ -46,7 +45,7 @@ const WorkoutItem = ({ workout, onRefresh }) => {
         }
     };
     
-    // FIX: This function now directly calls the API without any blocked confirmation dialogs.
+    
     const handleDelete = async () => {
         try {
             await api.delete(`/workouts/${workout._id}`);
