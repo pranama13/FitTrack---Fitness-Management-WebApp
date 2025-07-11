@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # Frontend Service (React + Vite)
+  frontend:
+    build:
+      context: ./frontend # Path to your frontend app
+      dockerfile: Dockerfile
+    ports:
+      - '5173:5173' # Expose Vite's default port
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules # Use the node_modules from within the container
+    environment:
+      - VITE_API_BASE_URL=http://localhost:5000/api
+    depends_on:
+      - backend
+
+  # Backend Service (Node.js + Express)
+  backend:
+    build:
+      context: ./server # Path to your backend app
+      dockerfile: Dockerfile
+    ports:
+      - '5000:5000' # Expose the backend API port
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/fitflow
+      - JWT_SECRET=${JWT_SECRET} # Use the secret from your .env file
+      - PORT=5000
+    depends_on:
+      - mongo
+
+  # MongoDB Service
+  mongo:
+    image: mongo:latest
+    ports:
+      - '27017:27017' # Expose the MongoDB port
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
