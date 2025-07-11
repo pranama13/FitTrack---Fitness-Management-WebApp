@@ -6,7 +6,7 @@ import api from '../../services/api';
 const TwoFactorAuth = () => {
     const { user, setUser } = useContext(AuthContext);
     const { showToast } = useToast();
-    const [setupData, setSetupData] = useState(null); // To store QR code and secret
+    const [setupData, setSetupData] = useState(null); 
     const [token, setToken] = useState('');
 
     const handleEnable = async () => {
