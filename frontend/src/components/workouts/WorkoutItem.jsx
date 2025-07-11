@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, Edit, Trash2 } from 'lucide-react';
-// Exercise-related components would be imported here
 
 const WorkoutItem = ({ workout, onDelete, onUpdate }) => {
     const [isOpen, setIsOpen] = useState(false);
-    // State for editing, exercises, etc. would go here
 
     const goalColors = {
         bulking: 'bg-red-500/20 text-red-400 border-red-500/30',
@@ -28,7 +26,6 @@ const WorkoutItem = ({ workout, onDelete, onUpdate }) => {
             {isOpen && (
                 <div className="p-4 border-t border-gray-700">
                     <p className="text-sm text-gray-400">Exercises would be listed here.</p>
-                    {/* ExerciseList and AddExerciseForm components would be rendered here */}
                 </div>
             )}
         </div>
