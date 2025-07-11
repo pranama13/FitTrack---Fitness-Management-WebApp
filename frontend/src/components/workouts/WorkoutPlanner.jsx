@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import api from '../../services/api';
 import AddWorkoutForm from './AddWorkoutForm';
 import WorkoutList from './WorkoutList';
-// Other imports would go here, e.g., FilterSortControls
+
 
 const WorkoutPlanner = () => {
     const [workouts, setWorkouts] = useState([]);
@@ -72,7 +72,6 @@ const WorkoutPlanner = () => {
     return (
         <div>
             <AddWorkoutForm onAdd={handleAddWorkout} />
-            {/* FilterSortControls would be here */}
             {loading ? (
                 <p className="text-center mt-8">Loading workouts...</p>
             ) : (
