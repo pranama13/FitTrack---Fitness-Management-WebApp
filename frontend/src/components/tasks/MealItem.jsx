@@ -16,7 +16,6 @@ const MealItem = ({ meal, onRefresh }) => {
         }
     };
     
-    // FIX: This function now directly calls the API without any blocked confirmation dialogs.
     const handleDelete = async () => {
         try {
             await api.delete(`/meals/${meal._id}`);
