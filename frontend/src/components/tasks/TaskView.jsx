@@ -61,7 +61,6 @@ const TaskView = ({ date }) => {
                 <p className="text-center text-gray-400 py-10">Loading tasks...</p>
             ) : (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* Workouts Column */}
                     <div>
                         <div className="flex flex-col sm:flex-row justify-between items-center pb-2 mb-4 border-b-2 border-blue-500 gap-2">
                            <h2 className="text-2xl font-semibold text-white">Workouts</h2>
@@ -73,7 +72,6 @@ const TaskView = ({ date }) => {
                             )) : <p className="text-gray-500 p-4 bg-slate-800/50 rounded-lg">No workouts planned.</p>}
                         </div>
                     </div>
-                    {/* Meals Column */}
                     <div>
                         <div className="flex flex-col sm:flex-row justify-between items-center pb-2 mb-4 border-b-2 border-orange-500 gap-2">
                            <h2 className="text-2xl font-semibold text-white">Meals</h2>
